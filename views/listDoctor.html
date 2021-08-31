@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="background.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div style="background-color: rgb(93, 178, 228) ;" class="jumbotron">
+        <img src="pepe_doctor.png" class="header-pic" />
+        <h1>Doctors and Patients Hospital</h1>
+        <p>List Doctors</p>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/addDoctor">Add Doctor</a></li>
+                <li class="active"><a href="/listDoctor">List Doctors</a></li>
+                <li><a href="/addPatient">Add Patient</a></li>
+                <li><a href="/listPatient">List Patients</a></li>
+                <li><a href="/deletePatient">Delete Patient</a></li>
+                <li><a href="/updateDoctor">Update Doctor's Patient</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table style="margin-right: 2%;" class="table table-striped">
+        <thead>
+            <tr>
+                <th>_id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>State</th>
+                <th>Suburb</th>
+                <th>Street</th>
+                <th>Unit</th>
+                <th>Number of Patients</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0;i<data.length;i++) { %>
+            <tr>
+                <td><%=data[i]._id%></td>
+                <td><%=data[i].fullName.firstName%></td>
+                <td><%=data[i].fullName.lastName%></td>
+                <td><%=data[i].dateOfBirth%></td>
+                <td><%=data[i].address.state%></td>
+                <td><%=data[i].address.suburb%></td>
+                <td><%=data[i].address.street%></td>
+                <td><%=data[i].address.unit%></td>
+                <td><%=data[i].numPatients%></td>
+            </tr>
+            <%}%>
+        </tbody>
+    </body>

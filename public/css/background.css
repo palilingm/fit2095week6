@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(180, 180, 180);
+}
+
+.header-pic {
+    position: relative;
+    top: 2%;
+    left: 2%;
+    height: 200px;
+    width: 200px;
+}

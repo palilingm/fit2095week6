@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="background.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div style="background-color: rgb(93, 178, 228) ;" class="jumbotron">
+        <img src="pepe_doctor.png" class="header-pic" />
+        <h1>Doctors and Patients Hospital</h1>
+        <p>List Patients</p>
+    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/addDoctor">Add Doctor</a></li>
+                <li><a href="/listDoctor">List Doctors</a></li>
+                <li><a href="/addPatient">Add Patient</a></li>
+                <li class="active"><a href="/listPatient">List Patients</a></li>
+                <li><a href="/deletePatient">Delete Patient</a></li>
+                <li><a href="/updateDoctor">Update Doctor's Patient</a></li>
+            </ul>
+        </div>
+    </nav>
+    <table style="margin-right: 2%;" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Date of Visit</th>
+                <th>Desctription</th>
+                <th>Doctor's ID</th>
+                <th>Doctor's First Name</th>
+                <th>Doctor's Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i=0;i<data.length;i++) { %>
+            <tr>
+                <td><%=data[i].fullName%></td>
+                <td><%=data[i].age%></td>
+                <td><%=data[i].dateOfVisit%></td>
+                <td><%=data[i].description%></td>
+                <td><%=data[i].doctor._id%></td>
+                <td><%=data[i].doctor.fullName.firstName%></td>
+                <td><%=data[i].doctor.fullName.lastName%></td>
+            </tr>
+            <%}%>
+        </tbody>
+    </body>
