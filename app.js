@@ -1,19 +1,10 @@
 const {
     ObjectId
 } = require('bson');
-const {
-    render
-} = require('ejs');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path/posix');
-const {
-    redirect
-} = require('statuses');
-const {
-    db
-} = require('./models/doctor');
-const doctor = require('./models/doctor');
 
 const app = express();
 
@@ -63,6 +54,10 @@ app.get('/updateDoctor', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'updateDoctor.html'));
 });
 
+app.get('/extraPage', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'extraPage.html'));
+});
+
 app.get('/listDoctor', (req, res) => {
     Doctors.find({}, (err, docs) => {
         res.render('listDoctor.html', {
@@ -76,7 +71,7 @@ app.get('/listPatient', (req, res) => {
         res.render('listPatient.html', {
             data: docs
         });
-    })
+    });
 });
 
 app.get('/invalid', (req, res) => {
@@ -134,6 +129,14 @@ app.post('/updateDoctor', (req, res) => {
     res.redirect('/listDoctor');
 });
 
+app.post('/extraPage', (req, res) => {
+    Doctors.find({'numPatients':`${req.body.numPatients}`},(err, docs) => {
+            res.render('listDoctor.html', {
+            data: docs
+        });
+    });
+});
+
 //functions
 function createDoctor(body) {
     let newDoctor = new Doctors({
@@ -175,7 +178,7 @@ function createPatient(body) {
 }
 
 function saveDocument(document, res) {
-    noError = true;
+    let noError;
     document.save((err) => {
         if (err) {
             res.redirect('/invalid');
@@ -183,6 +186,7 @@ function saveDocument(document, res) {
             return;
         }
         console.log('Saved successfully')
+        noError=true;
     });
     return noError;
 }
