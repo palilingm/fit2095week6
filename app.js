@@ -1,7 +1,3 @@
-const {
-    ObjectId
-} = require('bson');
-
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path/posix');
@@ -13,7 +9,7 @@ const Patients = require('./models/patient');
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set('PORT', 8080);
+app.set('PORT', 80);
 
 app.use(express.urlencoded({
     extended: true
